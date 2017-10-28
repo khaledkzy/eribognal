@@ -8,4 +8,8 @@ const addNewPlace = (query, callback) => {
     Place.create(query).then(callback)
 };
 
-module.exports = addNewPlace;
+const getPlaces = (query, callback) => {
+    mongoose.connect(connection);
+    Place.create(query).then(callback)
+}
+module.exports = { addNewPlace, getPlaces };

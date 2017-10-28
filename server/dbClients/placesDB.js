@@ -1,10 +1,10 @@
-const mongoConnection = process.env.MONGODB_URI || 'mongodb://localhost:27017/eribongal';
+const connection =require('./connection')
 const Place = require('../models/Place');
 const mongoose = require('mongoose')
 mongoose.Promise = global.Promise;
 
 const addNewPlace = (query, callback) => {
-    mongoose.connect(mongoConnection);
+    mongoose.connect(connection);
     Place.create(query).then(callback)
 };
 

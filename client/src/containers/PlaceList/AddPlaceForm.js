@@ -105,11 +105,9 @@ class AddPlaceForm extends React.Component {
       .then((response) => {
         this.setState({
           name: "",
-          open: false,
           description: "",
           selectedCategory: "",
           open: true,
-          
           error: undefined,
           address: {
             line1: "",
@@ -117,21 +115,25 @@ class AddPlaceForm extends React.Component {
             postcode: "",
             city: "",
           },
-          
+
         })
-        
+
         this.props.history.push("/new-place")
       }
       )
       .catch((error) => {
         this.setState({
+          open: true,
           error,
+
         })
       })
   }
   handleRequestClose = () => {
-    this.setState({ open: false,
-      isLoading: true });
+    this.setState({
+      open: false,
+      isLoading: false,
+    });
   };
   _handleChange = (event, field) => {
     const value = event.target.value;
@@ -150,7 +152,24 @@ class AddPlaceForm extends React.Component {
   }
   showError = () => {
     if (this.state.error !== undefined) {
-      return (<div style={styles.error}>An Error Has Happened</div>)
+      return (
+        <Dialog
+          open={this.state.open}
+          onRequestClose={this.handleRequestClose}
+        >
+          <DialogTitle>{"Error"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              An Error Has Happened, Please Make Sure That You have entered all the details
+                     </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleRequestClose} color="primary">
+              OK
+             </Button>
+          </DialogActions>
+        </Dialog>
+      )
     }
   }
   render() {
@@ -171,19 +190,16 @@ class AddPlaceForm extends React.Component {
                     open={this.state.open}
                     onRequestClose={this.handleRequestClose}
                   >
-
                     <DialogTitle>{"Thank You"}</DialogTitle>
                     <DialogContent>
                       <DialogContentText>
-                       You have Successfully submitted the form
-            </DialogContentText>
+                        You have Successfully submitted the form
+                     </DialogContentText>
                     </DialogContent>
                     <DialogActions>
                       <Button onClick={this.handleRequestClose} color="primary">
                         OK
-            </Button>
-                     
-
+                      </Button>
                     </DialogActions>
                   </Dialog>
                   <TextField

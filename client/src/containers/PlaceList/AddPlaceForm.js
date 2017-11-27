@@ -115,9 +115,7 @@ class AddPlaceForm extends React.Component {
             postcode: "",
             city: "",
           },
-
         })
-
         this.props.history.push("/new-place")
       }
       )
@@ -125,14 +123,19 @@ class AddPlaceForm extends React.Component {
         this.setState({
           open: true,
           error,
-
         })
       })
   }
-  handleRequestClose = () => {
+  handleRequestClosex = () => {
     this.setState({
       open: false,
       isLoading: false,
+    });
+  };
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+      isLoading: true,
     });
   };
   _handleChange = (event, field) => {
@@ -155,7 +158,7 @@ class AddPlaceForm extends React.Component {
       return (
         <Dialog
           open={this.state.open}
-          onRequestClose={this.handleRequestClose}
+          onRequestClose={this.handleRequestClosex}
         >
           <DialogTitle>{"Error"}</DialogTitle>
           <DialogContent>
@@ -164,7 +167,7 @@ class AddPlaceForm extends React.Component {
                      </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleRequestClose} color="primary">
+            <Button onClick={this.handleRequestClosex} color="primary">
               OK
              </Button>
           </DialogActions>
@@ -176,7 +179,9 @@ class AddPlaceForm extends React.Component {
     const { classes } = this.props;
     const { fullScreen } = this.props;
     if (this.state.isLoading) {
+      
       return <Spinner />
+      
     } else {
       return (
         <Grid container spacing={24}>
@@ -190,6 +195,7 @@ class AddPlaceForm extends React.Component {
                     open={this.state.open}
                     onRequestClose={this.handleRequestClose}
                   >
+
                     <DialogTitle>{"Thank You"}</DialogTitle>
                     <DialogContent>
                       <DialogContentText>

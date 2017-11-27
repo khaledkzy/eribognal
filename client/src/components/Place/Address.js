@@ -22,8 +22,6 @@ class Address extends React.Component {
         return (
             <div style={styles.addressContainer}>
                 <TextField
-                    required
-                    id="required"
                     label="Address line 1"
                     value={this.props.line1}
                     onChange={(event) => this.props.onChange(event, "line1")}
@@ -31,8 +29,6 @@ class Address extends React.Component {
                     name="line1"
                     placeholder="Address line 1" />
                 <TextField
-                    required
-                    id="required"
                     label="Address line 2"
                     value={this.props.line2}
                     onChange={(event) => this.props.onChange(event, "line2")}
@@ -40,8 +36,6 @@ class Address extends React.Component {
                     name="line2"
                     placeholder="Address line 2" />
                 <TextField
-                    required
-                    id="required"
                     label="postcode"
                     value={this.props.postcode}
                     type="text"

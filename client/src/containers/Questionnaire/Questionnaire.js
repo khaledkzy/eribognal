@@ -68,7 +68,6 @@ class Questions extends React.Component {
             answers: this.state.questions
         })
             .then(() => {
-
                 this.props.history.push("/")
             })
     }

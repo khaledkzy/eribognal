@@ -26,7 +26,7 @@ class App extends Component {
               <Route path="/questionnaire" component={Questions} />
               <Route path="/places" component={PlacesList} />
               <Route path="/new-place" component={AddPlaceForm} />
-              <Route exact path="/places/:placeId" component={viewPlace} />
+              <Route path="/place/:placeId" component={viewPlace} />
             </Grid>
           </Grid>
         </div>

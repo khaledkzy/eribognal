@@ -1,48 +1,47 @@
 import React from 'react';
 import apiClient from '../../helpers/apiClient';
 
+
+
 class viewPlace extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            place:[]
+            places: [],
         };
     }
 
     componentDidMount() {
         apiClient.viewPlaces()
             .then(({ data }) => {
-                console.log(data)
                 this.setState({
-                    place: data
+                    places: data,
                 });
             })
-            .catch((err) => { })    
+            .catch((err) => { })
     }
-    
-    display = (placeId) => {
-        apiClient.viewPlace()
-        .then(({data}) => {
-            this.setState({
-                place: data
-            })
-        })
-    }
+
     render() {
+        let {placeId} = this.props.match.params
+            
+        
         return (
             <div>
+            
                 {
-                    this.state.place.map((place, index) => {
+                    
+                    
+                    this.state.places.map((place, index) => {
+                        if(place._id === placeId)
                         return (
                             <div key={index}>
-                           { place.name }
-                           {place.category}
-                           {<button onClick={() => this.display(place._id)}>view</button>} 
+                                {place.name}
+                                {place.category}
+                                {place._id}
                             </div>
                         )
                     })
                 }
-             
             </div>
         )
     }

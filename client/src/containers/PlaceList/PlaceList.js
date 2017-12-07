@@ -40,6 +40,7 @@ class PlacesList extends React.Component {
 
     onSelect = event => {
         const value = event.target.value;
+        debugger
         this.setState({
             selectedCatagory: value
         })

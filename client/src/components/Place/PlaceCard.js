@@ -37,18 +37,18 @@ const PlaceCard = props => {
     const place = props.place;
     return (
         <div style={styles.cardList}>
-            <Grid container spacing={24} >
-                <Grid item xs={4} style={{ textAlign: 'center' }}>
-                    <CategoryIcon category={place.category} />
-                </Grid>
-                <Link value={place._id} to={`/places/${place._id}`} >
+            <Link value={place._id} style={{ textDecoration: 'none' }} to={`/places/${place._id}`} >
+                <Grid container spacing={24} >
+                    <Grid item xs={4} style={{ textAlign: 'center' }}>
+                        <CategoryIcon category={place.category} />
+                    </Grid>
                     <Grid item xs={8} style={{ paddingTop: 0 }}>
                         <p style={styles.listTitle}> {place.name} </p>
                         <p style={styles.listAddress}>{place.category} </p>
                         <p style={styles.listDetails}> {place.description} </p>
                     </Grid>
-                </Link>
-            </Grid>
+                </Grid>
+            </Link>
         </div>
     )
 };

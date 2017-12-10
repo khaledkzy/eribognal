@@ -5,4 +5,7 @@ const addAnswer = (query) => {
     return Answer.create(query);
 };
 
-module.exports = { addAnswer };
+const getQuestionnaire = (query, callback) => {
+    Answer.find(query).exec(callback)
+  }
+module.exports = { addAnswer,getQuestionnaire };

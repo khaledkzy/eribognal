@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 const Place = require('../models/Place');
 const placesDB = require('../dbClients/placesDB')
-
 const answerDB = require('../dbClients/answerDB');
 const path = require('path');
 const imagesDir = path.dirname(require.main.filename) + '/../public/images/places/';
 const questionsData = require('./data/questions');
+const _ = require('lodash');
+
 
 /* GET questions list from db. */
 router.get('/questions', function (req, res, next) {
@@ -53,7 +54,24 @@ router.post('/answers', function (req, res, next) {
     answerDB.addAnswer(req.body).then(callback).catch(errorCallback)
 
 })
+    
+router.get('/questionnaire', function (req, res, next) {
+    const callback = (error, answers) => {
+      let answersByQuestions = _.map(_.map(answers, 'answers'), answer => {
+        return _.groupBy(answer, 'title')
+      });
+      
+      const keys = _.keys(answersByQuestions[0])
 
+      const mappedByKey = _.map(keys, key => {
+         return { [key]: _.map(answersByQuestions, key)}
+      })
+  
+      res.send(mappedByKey);
+    };
+
+    answerDB.getQuestionnaire(callback);
+  });
 router.get('/places/:placeId', function (req, res, next) {
     const body = req.body;
     const placeId = req.params.placeId;

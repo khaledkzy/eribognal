@@ -43,7 +43,7 @@ const PlaceCard = props => {
                     <CategoryIcon category={place.category} />
                 </Grid>
                 <Grid item xs={8} style={{ paddingTop: 0 }}>
-                <Link value={place._id} to={`/place/${place._id}`} ><p style={styles.listTitle}> {place.name} </p></Link>
+                <Link value={place._id} to={`/places/${place._id}`} ><p style={styles.listTitle}> {place.name} </p></Link>
                     
                     <p style={styles.listAddress}>{place.category} </p>
                     <p style={styles.listDetails}> {place.description} </p>

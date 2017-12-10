@@ -31,8 +31,17 @@ const apiClient = {
         }
         return axios.post(`${apiUrl}/api/places`, data, config)
     },
-    viewPlaces: () => {
-        return axios.get(`${apiUrl}/api/places/`);
+    viewPlaces: (placeId) => {
+        return axios.get(`${apiUrl}/api/places/${placeId}`);
+    },
+    xx: (placeId) => {
+        let blue = []
+        return  blue =  (axios.get(`${apiUrl}/api/places/${placeId}`))
+        .then((blue)=>{
+            const placex = blue[0[0[0[0]]]]
+            return placex
+
+        });
     }
 }
 

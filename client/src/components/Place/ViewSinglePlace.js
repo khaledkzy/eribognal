@@ -55,20 +55,20 @@ class viewPlace extends React.Component {
     }
 
     _renderAddress = (place) => {
-        if(!place.address){
+        if (!place.address) {
             return null
         }
         return (
             <div><p style={styles.listDetails}> {place.address.line1} </p>
-            <p style={styles.listDetails}> {place.address.line2} </p>
-            <p style={styles.listDetails}> {place.address.postcode} </p>
-        <p style={styles.listDetails}> {place.address.city} </p></div>);
+                <p style={styles.listDetails}> {place.address.line2} </p>
+                <p style={styles.listDetails}> {place.address.postcode} </p>
+                <p style={styles.listDetails}> {place.address.city} </p></div>);
     }
 
 
     render() {
         let place = this.state.place;
-        if(!place._id) {
+        if (!place._id) {
             return null;
         }
 

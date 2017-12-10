@@ -31,7 +31,7 @@ const apiClient = {
         }
         return axios.post(`${apiUrl}/api/places`, data, config)
     },
-    viewPlaces: (placeId) => {
+    viewSinglePlace: (placeId) => {
         return axios.get(`${apiUrl}/api/places/${placeId}`);
     },
     

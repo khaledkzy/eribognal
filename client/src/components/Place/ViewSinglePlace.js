@@ -45,7 +45,7 @@ class viewPlace extends React.Component {
     componentDidMount() {
         let { placeId } = this.props.match.params
 
-        apiClient.viewPlaces(placeId)
+        apiClient.viewSinglePlace(placeId)
             .then(({ data }) => {
                 this.setState({
                     place: data,

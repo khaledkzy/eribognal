@@ -34,15 +34,7 @@ const apiClient = {
     viewPlaces: (placeId) => {
         return axios.get(`${apiUrl}/api/places/${placeId}`);
     },
-    xx: (placeId) => {
-        let blue = []
-        return  blue =  (axios.get(`${apiUrl}/api/places/${placeId}`))
-        .then((blue)=>{
-            const placex = blue[0[0[0[0]]]]
-            return placex
-
-        });
-    }
+    
 }
 
 export default apiClient;

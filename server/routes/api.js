@@ -55,23 +55,6 @@ router.post('/answers', function (req, res, next) {
 
 })
     
-router.get('/questionnaire', function (req, res, next) {
-    const callback = (error, answers) => {
-      let answersByQuestions = _.map(_.map(answers, 'answers'), answer => {
-        return _.groupBy(answer, 'title')
-      });
-      
-      const keys = _.keys(answersByQuestions[0])
-
-      const mappedByKey = _.map(keys, key => {
-         return { [key]: _.map(answersByQuestions, key)}
-      })
-  
-      res.send(mappedByKey);
-    };
-
-    answerDB.getQuestionnaire(callback);
-  });
 router.get('/places/:placeId', function (req, res, next) {
     const body = req.body;
     const placeId = req.params.placeId;
